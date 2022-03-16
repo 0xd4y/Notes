@@ -1,8 +1,7 @@
 # AWS Security Specialty
+These are all the notes that I took after reading the entire exam guide for the AWS Ceritifed Security - Specialty exam (ISBN-13: 978-1789534474). 
 
 # Things to Know on Exam
-
-	- Data encryption key# Things Tested on Exam
 - need to know logging
 	- how to handle monitoring and logging
 	- how to automate responses to incidents found in those logs
@@ -1679,3 +1678,4 @@ What is the difference between AWS CloudWatch and Amazon CloudTrail?
 	- aws/s3
 
 64. Which keys used in conjunction with KMS are used outside of the KMS platform to perform encryption against your data?
+- Data Encryption key
