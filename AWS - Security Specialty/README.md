@@ -1,5 +1,5 @@
 # AWS Security Specialty
-These are all the notes that I took after reading the entire exam guide for the AWS Ceritifed Security - Specialty exam (ISBN-13: 978-1789534474). It is recommended that you install Obsidian and download the zip file instead, as this will allow you to quickly and easily navigate these notes.
+These are all the notes that I took after reading the entire exam guide for the AWS Ceritifed Security - Specialty exam (ISBN-13: 978-1789534474). It is recommended that you install Obsidian and download the zip file instead, as this will allow you to quickly and easily navigate through these notes.
 
 # Things to Know on Exam
 - need to know logging
