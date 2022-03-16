@@ -1491,9 +1491,10 @@ What is the difference between Internet Gateway (IGW) and NAT Gateway (NGW)?
 What is the difference between AWS CloudWatch and Amazon CloudTrail?
 
 - AWS CloudWatch monitors AWS resources and applications while CloudTrail monitors activity within AWS environment# Mock Exam Questions 
-- questions I got wrong or was unsure about
 
 ## Mock Exam 1
+- questions I got wrong or was unsure about
+
 1. When IAM policies are being evaluated for their logic of access, which two of the following statements are incorrect?
 
 	- explicit denies are always overruled by an explicit allow
