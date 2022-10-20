@@ -1,4 +1,5 @@
 # GCP Penetration Testing
+https://0xd4y.com/2022/10/01/GCP-Penetration-Testing-Notes/
 
 # Privesc and Post-Exploitation in GCP by **Chris Moberly**
 
