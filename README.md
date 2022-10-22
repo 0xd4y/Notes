@@ -1,5 +1,5 @@
 # Notes
-Here is where I will upload some of my notes. Typically they are related to information security.
+Here is where I upload some of my notes. Typically they are related to information security.
 
 All dark mode notes can be found in their HTML format on my website: https://0xd4y.com/.
 
