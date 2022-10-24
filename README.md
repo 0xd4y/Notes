@@ -3,14 +3,24 @@ Here is where I upload some of my notes. Typically they are related to informati
 
 All dark mode notes can be found in their HTML format on my website: https://0xd4y.com/.
 
-## Hands on AWS Pentesting
+## AWS
+### Hands on AWS Pentesting
 https://0xd4y.com/2022/09/11/Hands-on-AWS-Penetration-Testing-Notes/
 - Privilege escalation techniques
 - AWS pentest tools
 - Bypassing GuardDuty and Cloudtrail
 - And much more!
 
-## GCP Penetration Testing Notes
+### AWS Security Specialty
+https://0xd4y.com/2022/03/15/AWS-Security-Specialty-Notes/
+- Notes from security engineer point of view
+- Securely configuring AWS environments
+- Security responsibility & access management 
+- Monitoring, logging, and auditing 
+- Best practices and automation 
+- Encryption and data security
+
+### GCP Penetration Testing Notes
 https://0xd4y.com/2022/10/01/GCP-Penetration-Testing-Notes/
 - GCP fundamentals
 - Privilege escalation techniques 
@@ -19,11 +29,10 @@ https://0xd4y.com/2022/10/01/GCP-Penetration-Testing-Notes/
 - Avoiding alerts
 - GCP networking
 
-## AWS Security Specialty
-https://0xd4y.com/2022/03/15/AWS-Security-Specialty-Notes/
-- Notes from security engineer point of view
-- Securely configuring AWS environments
-- Security responsibility & access management 
-- Monitoring, logging, and auditing 
-- Best practices and automation 
-- Encryption and data security
+### GCP Penetration Testing Notes 2
+https://0xd4y.com/2022/10/24/GCP-Penetration-Testing-Notes-2/
+- Privilege escalation techniques (IAM and Non-IAM)
+- GKE, Google Cloud Storage, Cloud Build, etc.
+- Remediation
+- Tools
+
