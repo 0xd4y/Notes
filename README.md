@@ -20,6 +20,7 @@ https://0xd4y.com/2022/03/15/AWS-Security-Specialty-Notes/
 - Best practices and automation 
 - Encryption and data security
 
+## GCP
 ### GCP Penetration Testing Notes
 https://0xd4y.com/2022/10/01/GCP-Penetration-Testing-Notes/
 - GCP fundamentals
