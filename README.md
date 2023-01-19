@@ -37,3 +37,12 @@ https://0xd4y.com/2022/10/24/GCP-Penetration-Testing-Notes-2/
 - Remediation
 - Tools
 
+## Wi-Fi
+https://0xd4y.com/2023/01/19/Wi-Fi-Pentesting-Notes/
+### Wi-Fi Pentesting Notes
+- MITM SSL
+- Hotspot attacks
+- Gaining access to hidden SSIDs
+- Wireless IDS and IPS
+- WEP, WPA-PSK, and WPA2-PSK attacks 
+- Spoofing attacks and detection
