@@ -1,4 +1,5 @@
 # Wi-Fi Pentesting Notes
+You can find the dark mode notes on my website: https://0xd4y.com/2023/01/19/Wi-Fi-Pentesting-Notes/
 
 # Contact
 
