@@ -39,6 +39,7 @@ https://0xd4y.com/2022/10/24/GCP-Penetration-Testing-Notes-2/
 
 ## Active Directory
 ### Active Directory Pentesting Notes
+https://0xd4y.com/2023/02/28/Active-Directory-Pentesting-Notes/
 - Common tactics, techniques, and procedures used by threat actors
 - Active Directory security fundamentals
 - Common tools used for AD pentesting
