@@ -45,6 +45,20 @@ https://0xd4y.com/2023/02/28/Active-Directory-Pentesting-Notes/
 - Common tools used for AD pentesting
 - Bypassing security mechanisms
 
+### CRTP Notes
+https://0xd4y.com/2023/03/26/CRTP-Notes/
+- Local privilege escalation
+- Domain privilege escalation
+- Tools for AD pentesting and red teaming
+- AV bypassing
+- Web exploitation
+- AD best practices
+- Defense
+- Threat detection
+- Trust relationships
+- AD fundamentals
+
+
 ## Wi-Fi
 ### Wi-Fi Pentesting Notes
 https://0xd4y.com/2023/01/19/Wi-Fi-Pentesting-Notes/
