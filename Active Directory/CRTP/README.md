@@ -37,7 +37,6 @@
 
 **How Kerberos Works**
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled.png)
 
 - [Kerberos NTLM uses RC4 encryption](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-nlmp/1e846608-4c5f-41f4-8454-1b91af8a755b)
 - DC contains all the credentials in the domain which allows it to decrypt requests made with a user’s NTLM hash
@@ -99,13 +98,11 @@ Get-ADUser -Filter 'Description -like "*built*" -Properties Description | select
 
 - users in trusted domain can access resources in another domain, but not the reverse
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%201.png)
 
 ### Two-Way Trust
 
 - users in both domains can access each other’s resources
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%202.png)
 
 ### Transitive Trust
 
@@ -114,7 +111,6 @@ Get-ADUser -Filter 'Description -like "*built*" -Properties Description | select
     - parent-child
     - tree-root
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%203.png)
 
 - domains A and C have a two-way trust with each other, because they both have a two-way trust with domain B
 
@@ -141,7 +137,6 @@ Parent-Child Trust
 - can be one-way, two-way, transitive, or nontransitive
 - needs to be manually created (forests trusts do not exist by default)
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%204.png)
 
 - can be found with `Get-ADForest`
 
@@ -207,7 +202,6 @@ S`eT-It`em ( 'V'+'aR' + 'IA' + ('blE:1'+'q2') + ('uZ'+'x') ) ( [TYpE]( "{1}{0}"-
         - can be found with `Get-NetUser -SPN` or `Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName`
 - service accounts typically have privileged access
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%205.png)
 
 - in step four, the TGS is saved to disc
 - because TGS encrypted with service account hash, you can try to perform an offline password attack
@@ -234,7 +228,6 @@ Invoke-Mimikatz -Command '"kerberos::list /export"'
 - if Kerberos preauth is not required for a user (required by default), you can get a user’s AS-REP and try to crack it
     - can be found with `Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth`
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%206.png)
 
 - when preauth is not required for the user, you can request authentication data for that user
     - KDC then responds in step 2 with a TGT encrypted with the user’s NTLM hash
@@ -354,7 +347,6 @@ sc \\<DNS_SERVER> stop dns
 sc \\<DNS_SERVER> start dns
 ```
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%207.png)
 
 ## Enterprise Admins (Child Domain to Forest Root)
 
@@ -369,7 +361,6 @@ Two ways of escalating privileges between two domains in same forest:
 
 Suppose you are a user in follow.0xd4y_notes.local and you try to access an app server that is present in the parent domain (0xd4y_notes.local):
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%208.png)
 
 In step 3, the follow.0xd4y_notes.local DC checks its global catalog for the app server the client is requesting. The DC then sees that the app server does note exist in its own global catalog, but it does exist in the parent domain, so it sends an inter-realm TGT (encrypted and signed with the trust key) to the client.
 
@@ -572,9 +563,7 @@ Set-ItemProperty HKLM:\System\CurrentControlSet\Control\LSA\ -Name 'Security Pac
 
 - found within the “Security” tab of a group’s properties:
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%209.png)
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%2010.png)
 
 - note when you modify ACL of specific group not within the AdminSDHolder ACL, your changes get overwritten
     - that’s why the persistence must be done within the AdminSDHolder ACL
@@ -594,11 +583,9 @@ Set-ItemProperty HKLM:\System\CurrentControlSet\Control\LSA\ -Name 'Security Pac
 
 **Interactive Method**
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%2011.png)
 
 Required permissions for DCSync:
 
-![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%2012.png)
 
 **NonInteractive Method**
 
@@ -653,7 +640,6 @@ On remote machine:
     - this command runs the `whoami` command across the nodes
     - target server must have either `xp_cmdshell` enabled, otherwise it can be enabled manually if `rpcout` is enabled using `EXECUTE('sp_configure "xp_cmdshell",1;reconfigure;') AT "example-sql"`
     
-    ![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%2013.png)
     
     - `ft` stands for format table (makes the output look nicer)
 - run `Get-SQLServerLink -Instance example-mssql` to find links to remote servers
@@ -902,7 +888,6 @@ You can either enable logging via the registry or via group policies.
     - logged under event `400` (Engine state is changed from None to Available) — look for `EngineVersion`
     - you can also potentially use PowerShell 6.0.0
         
-        ![Untitled](CRTP%20Notes%207c65562269c14f0ba54f9df255f72aa4/Untitled%2014.png)
         
 - modifying modules in memory
 - check Applocker policy, it may be possible to run some scripts in specified directories
