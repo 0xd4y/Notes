@@ -46,7 +46,7 @@ https://0xd4y.com/2023/02/28/Active-Directory-Pentesting-Notes/
 - Bypassing security mechanisms
 
 ### CRTP Notes
-https://0xd4y.com/2023/03/26/CRTP-Notes/
+https://0xd4y.com/2023/04/05/CRTP-Notes/
 - Local privilege escalation
 - Domain privilege escalation
 - Tools for AD pentesting and red teaming
