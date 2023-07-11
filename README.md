@@ -58,6 +58,17 @@ https://0xd4y.com/2023/04/05/CRTP-Notes/
 - Trust relationships
 - AD fundamentals
 
+### CRTE Notes
+https://0xd4y.com/2023/06/12/CRTE-Notes/
+- LAPS, gMSA, and Azure AD exploitation
+- Delegation
+- AD pentesting and red teaming tools
+- Tunnelling
+- Bypassing defenses
+- Evading detection
+- Certification Authority
+- Advanced SQL exploitation
+- Cross-forest attacks
 
 ## Wi-Fi
 ### Wi-Fi Pentesting Notes
