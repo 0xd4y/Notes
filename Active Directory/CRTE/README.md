@@ -6,7 +6,6 @@ These notes are a continuation of [CRTP (Certified Red Team Professional) Notes]
 
 This course is made for assumed breach scenarios.
 
-![Untitled](CRTE%20Notes%20d90ebe33f6774189b29f11b6f3b0175b/Untitled.png)
 
 # PowerShell Bypasses
 
@@ -256,7 +255,6 @@ AD CS can be abused to:
 4. Escalation to DA and EA
 5. Domain persistence
 
-![Untitled](CRTE%20Notes%20d90ebe33f6774189b29f11b6f3b0175b/Untitled%201.png)
 
 - can use certify.exe to find misconfigured templates (`certify.exe find`)
     - note that the `/vulnerable` flag only shows certificates in which domain users or default users group has enrollment rights
@@ -355,7 +353,6 @@ Get-ADObject -Filter {msDS-AllowedToDelegateTo -ne "$null"} -Properties msDS-All
 
 - note that use of AES256 may not work across forests as it depends on whether or not AES encryption is supported
 
-![Untitled](CRTE%20Notes%20d90ebe33f6774189b29f11b6f3b0175b/Untitled%202.png)
 
 ## Unconstrained Delegation
 
