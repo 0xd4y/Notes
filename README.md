@@ -63,7 +63,7 @@ https://0xd4y.com/2023/06/12/CRTE-Notes/
 - LAPS, gMSA, and Azure AD exploitation
 - Delegation
 - AD pentesting and red teaming tools
-- Tunnelling
+- Tunneling
 - Bypassing defenses
 - Evading detection
 - Certification Authority
